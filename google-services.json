@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "477466719210",
+    "project_id": "appmensajesuam",
+    "storage_bucket": "appmensajesuam.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:477466719210:android:cd3475693dbadb4e2bb893",
+        "android_client_info": {
+          "package_name": "com.mitnick796.appMensajesUam"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "477466719210-9tn7e0hkbtk1jmq9rl09lrmkqkr9ke2j.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mitnick796.appMensajesUam",
+            "certificate_hash": "8d8ff6862f73cdf27ab0b95ba873565cb4edce3e"
+          }
+        },
+        {
+          "client_id": "477466719210-u86smsurlhdk8n3ibg2d3480h9rmr0a2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mitnick796.appMensajesUam",
+            "certificate_hash": "b38bbea9c40019b987b8c89cc4b3a720ffec8ab1"
+          }
+        },
+        {
+          "client_id": "477466719210-gl2dq4496odm5q3ct7hmg6u07dff9ghs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBiwzHXFWTXcyws0vpJoJkGAz0r2824xxM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "477466719210-gl2dq4496odm5q3ct7hmg6u07dff9ghs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
