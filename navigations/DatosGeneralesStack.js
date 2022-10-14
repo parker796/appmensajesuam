@@ -8,7 +8,7 @@ const Stack = createStackNavigator()
 export default function DatosGeneralesStack() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="datosGeneralesStack" component={DatosGenerales} options={{title: "DatosGeneral"}} />
+      <Stack.Screen name="datosGeneralesStack" component={DatosGenerales} options={{title: "Buzon de entrada"}} />
       </Stack.Navigator>
   )
 }
