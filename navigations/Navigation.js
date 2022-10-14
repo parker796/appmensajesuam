@@ -6,6 +6,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
 import DatosGeneralesStack from './DatosGeneralesStack'
 import PerfilStack from './PerfilStack'
 import { Icon } from "@rneui/themed";
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 
 const Tab = createBottomTabNavigator()
 
@@ -16,20 +17,20 @@ export default function Navigation() {
       let icoName
       switch (route.name) {
         case "datosGenerales":
-          icoName = "home"
+          icoName = "inbox-arrow-down-outline"
           break
         case "perfil":
-          icoName = "home"
+          icoName = "account"
           break
     }//fin de switch
     return(
-      <Icon type="MaterialCommunityIcons" name = {icoName} size={22} color={color}/>
+      <MaterialCommunityIcons name={icoName} size={22} color={color} />
     )
   }//fin de la funcion
   return (//initialRouteName nos permite ver en donde se va parar nuestro componente activo en el tab
    <NavigationContainer>
         <Tab.Navigator
-            initialRouteName="datosGenerales"
+            initialRouteName="perfil"
             //tabBarOptions ya fue migrada a screenOptions
             tabBarOptions={{
               activeTintColor: '#ed3226',
