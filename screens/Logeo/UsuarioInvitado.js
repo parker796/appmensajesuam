@@ -1,10 +1,10 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
-export default function Perfil() {
+export default function UsuarioInvitado() {
   return (
     <View>
-      <Text>Perfil</Text>
+      <Text>UsuarioInvitado</Text>
     </View>
   )
 }

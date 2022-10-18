@@ -1,14 +1,14 @@
 import React from 'react'
 import {createStackNavigator} from '@react-navigation/stack'
-import Perfil from '../screens/Perfil'
+import Cuenta from '../screens/Logeo/Cuenta'
 
 
 const Stack = createStackNavigator()
 
-export default function DatosGeneralesStack() {
+export default function CuentaStack() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="perfilStack" component={Perfil} options={{title: "Perfil"}} />
+      <Stack.Screen name="cuentaStack" component={Cuenta} options={{title: "Cuenta"}} />
       </Stack.Navigator>
   )
 }

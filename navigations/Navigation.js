@@ -4,8 +4,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
 //import DatosGenerales from '../screens/DatosGenerales'
 //import Perfil from '../screens/Perfil'
 import DatosGeneralesStack from './DatosGeneralesStack'
-import PerfilStack from './PerfilStack'
-import { Icon } from "@rneui/themed";
+import CuentaStack from './CuentaStack'
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 
 const Tab = createBottomTabNavigator()
@@ -19,8 +18,8 @@ export default function Navigation() {
         case "datosGenerales":
           icoName = "inbox-arrow-down-outline"
           break
-        case "perfil":
-          icoName = "account"
+        case "cuentaNavigation":
+          icoName = "home"
           break
     }//fin de switch
     return(
@@ -30,7 +29,7 @@ export default function Navigation() {
   return (//initialRouteName nos permite ver en donde se va parar nuestro componente activo en el tab
    <NavigationContainer>
         <Tab.Navigator
-            initialRouteName="perfil"
+            initialRouteName="cuentaNavigation"
             //tabBarOptions ya fue migrada a screenOptions
             tabBarOptions={{
               activeTintColor: '#ed3226',
@@ -41,7 +40,7 @@ export default function Navigation() {
             })}  
             > 
             <Tab.Screen name="datosGenerales" component={DatosGeneralesStack} options={{title: "Buzon de entrada"}} ></Tab.Screen>
-            <Tab.Screen name="perfil" component={PerfilStack} options={{title: "Perfil"}}></Tab.Screen>
+            <Tab.Screen name="cuentaNavigation" component={CuentaStack} options={{title: "Cuenta"}}></Tab.Screen>
         </Tab.Navigator>
    </NavigationContainer>
   )
