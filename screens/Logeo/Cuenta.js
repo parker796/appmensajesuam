@@ -1,6 +1,6 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet} from 'react-native'
 import React, {useState, useEffect} from 'react'
-import { getCurrentUser, isUserLogged } from '../../utils/actions'
+import { getCurrentUser} from '../../utils/actions'
 import UsuarioLogeado from './UsuarioLogeado'
 import UsuarioInvitado from './UsuarioInvitado'
 import Loading from '../../components/Loading'

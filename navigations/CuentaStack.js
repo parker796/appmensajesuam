@@ -8,7 +8,7 @@ const Stack = createStackNavigator()
 export default function CuentaStack() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="cuentaStack" component={Cuenta} options={{title: "Cuenta"}} />
+      <Stack.Screen name="cuentaStack" component={Cuenta} options={{title: ""}} />
       </Stack.Navigator>
   )
 }
