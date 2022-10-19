@@ -1,6 +1,6 @@
 import { StyleSheet} from 'react-native'
 import React, {useState, useEffect} from 'react'
-import { getCurrentUser} from '../../utils/actions'
+import { getCurrentUser, isUserLogged} from '../../utils/actions'
 import UsuarioLogeado from './UsuarioLogeado'
 import UsuarioInvitado from './UsuarioInvitado'
 import Loading from '../../components/Loading'
@@ -16,6 +16,7 @@ export default function Cuenta() {
  useEffect(() => {
           const user = getCurrentUser()
             user ? setLogin(true) : setLogin(false)
+         //   setLogin[isUserLogged()]
     }, [])
 
   //no se alcanza a ver el loading porque pasa muy rapido el if  lo comentamos y ya se queda ahi el overlay
