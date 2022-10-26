@@ -17,3 +17,17 @@ export const isUserLogged = () =>{
 export const getCurrentUser = () => {
     return firebase.auth().currentUser;
 }
+
+export const closeSession = () => {
+    return firebase.auth().signOut()
+}
+//esta funcion nos permite registrar desde firebase al menos la contraseña es de 6 caracteres y un email valido
+export const registerUserFirebase = async(email, password) => {
+    const result = { statusResponse: true, error: null} //asumimos que no hubo errores
+    try {
+        await firebase.auth().createUserWithEmailAndPassword(email, password) //asi es como creamos el registro desde firebase
+    } catch (error) {
+        result.error("este correo ya ha sido registrado")
+    }
+    return result
+}
