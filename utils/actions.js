@@ -5,19 +5,33 @@ import 'firebase/firestore'
 //resuelve ese error de paquete de hay en fuera todo es actual en cuanto a paquetes
 
 const db = firebase.firestore(firebaseApp)
+/*
+el metodo is UserLogged debe ser async
 
-export const isUserLogged = () =>{
+export const isUserLogged = async () => {
+    let isLogged = false;
+    await firebase.auth().onAuthStateChanged((user) => {
+        if(user !== null) { 
+            isLogged = true;
+        }
+    });
+    return isLogged;
+};
+*/
+//con esta funcion verificamos si existe un usuario logeado o no algo falla
+export const isUserLogged = async() =>{
     let isLogged = false
-    firebase.auth().onAuthStateChanged((user) => {
+   await firebase.auth().onAuthStateChanged((user) => {
        user !== null && (isLogged = true)
     })
     return isLogged
 }
-
+//esta funcion si funciona bien
 export const getCurrentUser = () => {
     return firebase.auth().currentUser;
 }
 
+//funcion que nos sirve para cerrar la sesion
 export const closeSession = () => {
     return firebase.auth().signOut()
 }
@@ -27,7 +41,21 @@ export const registerUserFirebase = async(email, password) => {
     try {
         await firebase.auth().createUserWithEmailAndPassword(email, password) //asi es como creamos el registro desde firebase
     } catch (error) {
-        result.error("este correo ya ha sido registrado")
+        statusResponse = false
+        result.error("este correo ya ha sido registrado.")
+    }
+    return result
+}
+
+//funcion para iniciar sesion con login y password en firebase
+export const loginWithEmailAndPassword = async(email, password) => {
+    //const result = Promise.resolve();
+    const result = { statusResponse: true, error: null} //asumimos que no hubo errores
+    try {
+        await firebase.auth().signInWithEmailAndPassword(email, password) //asi es como creamos el registro desde firebase
+    } catch (error) {
+        statusResponse = false
+        result.error("el correo o la contraseña incorrectos.")
     }
     return result
 }

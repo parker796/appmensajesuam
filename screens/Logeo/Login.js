@@ -1,21 +1,24 @@
-import { StyleSheet, Text, View,ScrollView, Image  } from 'react-native'
+import { StyleSheet, Text, View, Image  } from 'react-native'
 import React from 'react'
 import { Divider } from '@rneui/base'
 import { useNavigation} from "@react-navigation/native"
+import FormularioLogin from '../../components/Logeo/FormularioLogin'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view' //esta libreria nos permite que no se nos oculte el boton cuando nos registremos
 export default function Login() {
     
 
   return (
-    <ScrollView>
+    //sustituimos el scrowview por el keyboardscrollview
+    <KeyboardAwareScrollView >
         <Image
         source={require("../../assets/LogoUam.jpg")} resizeMode="contain" style={styles.image}
         />
         <View style={styles.cointaner}>
-            <Text>formulario de login</Text>
+            <FormularioLogin/>
             <CrearCuenta/>
         </View>
         <Divider style={styles.divider}/>
-    </ScrollView>
+    </KeyboardAwareScrollView >
     
   )
 }

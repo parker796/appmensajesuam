@@ -13,11 +13,12 @@ export default function Cuenta() {
 /*  firebase.auth().onAuthStateChanged((user) => {
     user !== null ? (setLogin(false)) : setLogin(true) 
  }) //con esto funciona */
- useFocusEffect(//cada vez que pase por aca verifica si es logeado o no
+ useFocusEffect(//cada vez que pase por aca verifica si es logeado o no entonces aqui con esta funcion se refresca
   useCallback(() => {
-    const user = getCurrentUser()
+      const user = getCurrentUser()
       user ? setLogin(true) : setLogin(false)
-   //   setLogin[isUserLogged()]
+      //esta funcion a la primera de arranque no funciona y no refresca la pantalla cuando cierras sesion
+    //  setLogin[isUserLogged()] //isUserLogged nos sirve para verificar si hay un usuario logeado o no
 }, [])
  )
 //en la primera se toma pero en las demas ya no se actualiza el useEffect
@@ -30,7 +31,7 @@ export default function Cuenta() {
   //no se alcanza a ver el loading porque pasa muy rapido el if  lo comentamos y ya se queda ahi el overlay
   if(login == null){
     //return <Text>Cargando...</Text>
-    //return <Loading isVisible={true} text="Cargando..."/>
+   // return <Loading isVisible={true} text="Cargando..."/>
   }
       return login ? <UsuarioLogeado/> : <UsuarioInvitado/>
      // return <Text>hola cuenta</Text>

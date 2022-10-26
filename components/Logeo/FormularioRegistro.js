@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 import React, {useState} from 'react'
 import { Button, Input } from '@rneui/base'
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
@@ -6,7 +6,7 @@ import {validateEmail} from '../../utils/helpers'
 import { size } from 'lodash';
 import { useNavigation } from '@react-navigation/native'
 import {registerUserFirebase} from "../../utils/actions"
-
+import Loading from '../../components/Loading'
 //const navigation = useNavigation() //este no se pone aqui si no en la parte de la aplicacion
 
 export default function FormularioRegistrofnbgb() {
@@ -16,6 +16,7 @@ export default function FormularioRegistrofnbgb() {
     const[errorPassword, seterrorPassword] = useState("")
     const[errorConfirm,seterrorConfirm] = useState("")
     const[errorMatricula,seterrorMatricula] = useState("")
+    const[loading, setLoading] = useState(false)
 
     const navigation = useNavigation()
 
@@ -31,7 +32,10 @@ export default function FormularioRegistrofnbgb() {
         }
 
         //console.log("vamos bien")
-        const result = await registerUserFirebase(formData.email, formData.password)
+        setLoading(true)
+        const result = await registerUserFirebase(formData.email, formData.password) //esto puede demorar unos segundos
+        setLoading(false)
+
         if(!result.statusResponse){
             seterrorEmail(result.error)
             return
@@ -73,19 +77,22 @@ export default function FormularioRegistrofnbgb() {
         return isValid
     }
   return (
-    <View style={styles.estiloFormulario}>   
+    <View style={styles.estiloFormulario}>  
+
      <Input containerStyle={styles.input} placeholder='ingresa tu email'
             onChange={(e) => onChange(e, "email")}
             keyboardType="email-address"
             errorMessage={errorEmail}
             defaultValue={formData.email}
             />
+
     <Input containerStyle={styles.input} placeholder='ingresa tu matricula'
             onChange={(e) => onChange(e, "matricula")}
             keyboardType="numeric"
             errorMessage={errorMatricula}
             defaultValue={formData.matricula}
             />
+
      <Input containerStyle={styles.input} passwor={true} secureTextEntry={!showPassword} 
      onChange={(e) => onChange(e, "password")}
      errorMessage={errorPassword}
@@ -96,6 +103,7 @@ export default function FormularioRegistrofnbgb() {
                     size={22}
                     onPress={() => setshowPassword(!showPassword)}
                         />} placeholder='ingresa tu contraseña'/>
+
      <Input containerStyle={styles.input} passwor={true} secureTextEntry={!showPassword}
      onChange={(e) => onChange(e, "confirm")}
      errorMessage={errorConfirm}
@@ -108,6 +116,7 @@ export default function FormularioRegistrofnbgb() {
             />} placeholder='confirma tu contraseña'/>
     <Button title='Registrar nuevo usuario' containerStyle={styles.btnContainer} buttonStyle={styles.btn}
         onPress = {() => registerUser()/*console.log(formData)*/}/>
+        <Loading isVisible={loading} text="Creando cuenta..."/>
     </View>
   )
 }
