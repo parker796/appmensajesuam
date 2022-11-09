@@ -8,7 +8,6 @@ export default function App() {
 }
 
 /*
-import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View, Image, Button } from 'react-native';
 import 'expo-dev-client';
 import { GoogleSignin, GoogleSigninButton } from '@react-native-google-signin/google-signin';
@@ -34,7 +33,8 @@ export default function App() {
   useEffect(() => {
     const subscriber = auth().onAuthStateChanged(onAuthStateChanged);
     return subscriber; // unsubscribe on unmount
-  }, []);
+  }); //,[]
+
 //asyn function onGoogleButtonPress
   const onGoogleButtonPress = async() => {
     // Get the users ID token
