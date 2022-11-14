@@ -4,16 +4,37 @@ import { getCurrentUser, getCurrentUserGoogle, isUserLogged} from '../../utils/a
 import UsuarioLogeado from './UsuarioLogeado'
 import UsuarioInvitado from './UsuarioInvitado'
 import Loading from '../../components/Loading'
-import { useFocusEffect } from '@react-navigation/native'
-
+import { useFocusEffect, useRoute } from '@react-navigation/native'
+import { useNavigation } from '@react-navigation/native'
+//import { useLocation } from 'react-router-dom';//este es de react js
 //import firebase from 'firebase/app'
 export default function Cuenta({route}) {
   const [login, setLogin] = useState(null)
   const [loginGoogle, setloginGoogle] = useState(null)
-
- 
+  let nomb, ema;
+  if(route.params == null){ //ponemos esta condicion porque hay momento de que react native hace el compilado conpleto
+    route.params = null //nos manda un error para recuperar los parametros que vienen de navegacion porque precisamente vienen en null e inicialmente no se reconocen esos valores
+   // console.log(route.params)
+  }else{
+          const { nombre, email} = route.params;
+          console.log(nombre)
+          console.log(email)
+          nomb = nombre 
+          ema = email
+          //como los valores ya estan completos se quedan asi como estan pero en esta parte necesitamos
+          //que ya no existan los podriamos poner en null pero ya cuando los hayamos utilizado
+  }
+  
+  //const { state } = useLocation();
+  /*const route = useRoute()
+  const nombre = route.params.nombre*/
+  
+//  const email = route.key
+  //const navigation = useNavigation()
   /* 2. Get the param */
-  const { nombre, foto, email } = route.params;
+ // const nombre = navigation.getParent('nombre')
+  //const email = navigation.getId('email')
+  //const { nombre } = route.params
   
  // const currentUser = getCurrentUser();
 
@@ -43,20 +64,21 @@ export default function Cuenta({route}) {
    // return <Loading isVisible={true} text="Cargando..."/>
   }
    if(login == true) {
-      return login ? <UsuarioLogeado/> : <UsuarioInvitado/> 
-   }else{
+     
+   }
     
-   if(loginGoogle){
+   if(loginGoogle == true) {
     return(
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
     <Text>Detalles de la pantalla</Text>
-    <Text>nombre: {JSON.stringify(nombre)}</Text>
-    <Text>email: {JSON.stringify(email)}</Text>
+    <Text>nombre: { nomb }</Text>
+    <Text>email:  { ema }</Text>
     <UsuarioLogeado/>
     </View>
     )
-   }else{
-      return  <UsuarioInvitado/> }
+  }
+   if(loginGoogle == false) {
+    return <UsuarioInvitado/>
    }
       
      // return <Text>hola cuenta</Text>

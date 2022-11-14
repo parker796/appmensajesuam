@@ -20,7 +20,7 @@ export default function UsuarioLogeado() {
     <Text>UsuarioLogeado</Text>
     <Button title="Cerrar sesion" onPress={() => {
         setLoading(true)
-        closeSession() //en este igual puede demorar unos segundos ponemos un Loading
+        closeSession2() //en este igual puede demorar unos segundos ponemos un Loading
         setLoading(false)
         navigation.navigate("login")
     }}/>

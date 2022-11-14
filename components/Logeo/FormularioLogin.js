@@ -55,12 +55,15 @@ export default function FormularioLogin() {
     const user_sign_in = auth().signInWithCredential(googleCredential)
     user_sign_in.then((user) => {
       console.log(user)
-       /* 1. Navigate to the Details route with params */
-      navigation.navigate("cuentaStack", {
-        nombre: user.displayName,
-        foto: user.photoURL,
-        email: user.email
-      } )
+     // console.log(user.user.displayName)
+      let nombre = user.user.displayName
+      let email = user.user.email
+      //console.log(nombre)
+      /* 1. Navigate to the Details route with params */
+      navigation.navigate('cuentaStack', {
+        nombre: nombre,
+        email: email,
+      });
     })
     .catch((error) => {
       console.log(error)
@@ -150,13 +153,15 @@ export default function FormularioLogin() {
                     style={{ width: 325, height: 55 }}
                     size={GoogleSigninButton.Size.Wide}
                     color={GoogleSigninButton.Color.Dark}
-                    onPress= {onGoogleButtonPress}/*{ () => console.log("hola") } */ />
+                    onPress= {onGoogleButtonPress}/*{ () => console.log("hola") } */ 
+                    />
     
         <Loading isVisible={loading} text="Iniciando sesion..."/>
 
             </View>
         )  //icon es de native element
     }//fin del if para user
+   /*
     return(
         <View style={styles.container}>
           
@@ -168,7 +173,7 @@ export default function FormularioLogin() {
                   <Button title='cerrar sesion' onPress={signOut}/>
              </View>
           </View>
-      )
+      )*/
 }
 //esta funcion nos permite llamarla varias veces en el estado del formulario hubo un error porque no se encontro la ponemos al final
 const defaultFormValues = () => {
