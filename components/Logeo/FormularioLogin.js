@@ -54,15 +54,17 @@ export default function FormularioLogin() {
     // Sign-in the user with the credential
     const user_sign_in = auth().signInWithCredential(googleCredential)
     user_sign_in.then((user) => {
-      console.log(user)
+      //console.log(user)
      // console.log(user.user.displayName)
       let nombre = user.user.displayName
       let email = user.user.email
+      let foto = user.user.photoURL
       //console.log(nombre)
       /* 1. Navigate to the Details route with params */
       navigation.navigate('cuentaStack', {
         nombre: nombre,
         email: email,
+        foto: foto
       });
     })
     .catch((error) => {
