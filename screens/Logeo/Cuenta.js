@@ -116,7 +116,7 @@ export default function Cuenta({route}) {
       user ? setLogin(true) : setLogin(false)
       //esta funcion a la primera de arranque no funciona y no refresca la pantalla cuando cierras sesion
     //  setLogin[isUserLogged()] //isUserLogged nos sirve para verificar si hay un usuario logeado o no
-}, [matricula])
+}, [matricula])//este parte del render no se toma como la primera si no que se toma cada que hay valor en la matricula es como si fuera un if si es null no funciona pero como si lega ese valor si se toma para mostrar la api
  )
 
 //en la primera se toma pero en las demas ya no se actualiza el useEffect
